@@ -30,7 +30,12 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use("/Images", express.static(path.join(process.cwd(), "Images")));
 app.use(cors());
-
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "Server is running successfully 🚀",
+  });
+});
 // Routes
 app.use("/web/api/enquiry", enquiryRoutes);
 app.use('/admin/order', orderRouter);
