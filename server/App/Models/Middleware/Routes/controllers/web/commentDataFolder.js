@@ -1,4 +1,4 @@
-const commentModel = require("../../../../CommentModel");
+const commentModel = require("../../../../commentModel");
 
 let commentDataInsert = (req, res) => {
   let {name ,comment,date} = req.body; //data from api
