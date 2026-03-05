@@ -25,7 +25,7 @@ function PaymentSuccess() {
   const verifyPayment = async (sessionId) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/web/api/payment/verify-payment/${sessionId}`
+        `https://bookverse-6s2i.onrender.com/web/api/payment/verify-payment/${sessionId}`
       );
       
       if (response.data.success) {
