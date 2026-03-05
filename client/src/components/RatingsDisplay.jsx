@@ -14,12 +14,12 @@ const RatingsDisplay = ({ onAddRating, bookId }) => {
   const [isLoading, setIsLoading] = useState(false);
    const[author,setAuthor]=useState('');
 
-
+const API = "https://bookverse-server-juw1.onrender.com";
   // Fetch ratings from backend
   const fetchRatings = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('https://bookverse-6s2i.onrender.com/web/api/review/review-view');
+      const response = await axios.get(`${API}/web/api/review/review-view`);
       if (response.data.status === 1) {
         setRatings(response.data.ratingList);
       } else {
@@ -52,7 +52,7 @@ const RatingsDisplay = ({ onAddRating, bookId }) => {
           date: new Date().toISOString()
         };
 
-        const response = await axios.post('https://bookverse-6s2i.onrender.com/web/api/review/review-insert', ratingData);
+        const response = await axios.post(`${API}/web/api/review/review-insert`, ratingData);
         
         if (response.data) {
           toast.success('Rating submitted successfully!');
