@@ -5,11 +5,12 @@ const ClubOtpModel = require("../../../../ClubOtpModel");
 
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: process.env.SMTP_HOST,
+  port: parseInt(process.env.SMTP_PORT),
+  secure: false, // true only for port 465
   auth: {
-    user: "bably1937@gmail.com",
-
-    pass: "fjup jvkd olzl osyz", //app password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 const ClubOtpInsert=(async (req, res) => {
