@@ -28,7 +28,9 @@ const { PaymentRoutes, webHookHandler } = require("./App/Models/Middleware/Route
 
 
 
-
+app.get("/", (req, res) => {
+  res.send("Server is running 🚀");
+});
 
 
 app.post("/web/api/payment/webhook",express.raw({type:"application/json"}),webHookHandler);
