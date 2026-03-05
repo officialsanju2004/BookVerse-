@@ -41,7 +41,7 @@ app.use(cors());
 
 
 app.use("/web/api/enquiry",enquiryRoutes)
-mongoose.connect(process.env.DBURL).then(()=>{
+mongoose.connect(process.env.MONGODB_URI).then(()=>{
     console.log("Connected to MongoDb");
     app.listen(process.env.PORT||3000,()=>{
         console.log('Server is running...') 
