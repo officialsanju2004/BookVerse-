@@ -13,7 +13,7 @@ const { productRoutes } = require("./App/Models/Middleware/Routes/web/ProductRou
 const { userRoutes } = require("./App/Models/Middleware/Routes/web/UserInfoRoutes");
 
 const router = require("./App/Models/Middleware/Routes/web/RatingRoutes");
-const { commentRoutes } = require("./App/Models/Middleware/Routes/web/CommentRoutes");
+const { commentRoutes } = require("./App/Models/Middleware/Routes/web/commentRoutes");
 const { subscriberRoutes } = require("./App/Models/Middleware/Routes/web/SubscriberRoutes");
 const verifyAdmin = require("./App/Models/Middleware/AdminAuthMiddleware");
 const { loginRouter, adminLoginRouter } = require("./App/Models/Middleware/Routes/controllers/web/AdminDataFolder");
