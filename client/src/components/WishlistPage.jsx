@@ -28,7 +28,7 @@ function WishlistPage({ wishlist, toggleWishlist }) {
               >
                 <Link to={`/book/${book._id}`}>
                   <img 
-                     src={`http://localhost:8000${book.image}`}  
+                     src={`https://bookverse-6s2i.onrender.com${book.image}`}  
                     alt={book.title} 
                     className="w-full h-64 object-cover"
                   />
