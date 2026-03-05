@@ -6,10 +6,11 @@ import { toast } from 'react-toastify';
 
 const ClubMembers = ({ members }) => {
     const [userData,setUserData]=useState('');
+    const API = "https://bookverse-server-juw1.onrender.com";
   
   useEffect(() => {
     axios
-      .get("https://bookverse-6s2i.onrender.com/web/api/userInfo/userInfo-view")
+      .get(`${API}/web/api/userInfo/userInfo-view`)
       .then((res) => {
         setUserData(res.data);
       })
