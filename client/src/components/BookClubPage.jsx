@@ -15,6 +15,7 @@ const BookClubPage = ({ setWishlist, wishlist,removeBook,cart, setCart }) => {
   const [isMember, setIsMember] = useState(() => {
     return localStorage.getItem("joined") === "true";
   });
+  const API = "https://bookverse-server-juw1.onrender.com";
   useEffect(() => {
     const joined = localStorage.getItem("joined");
     const memberId=localStorage.getItem("memberId");
@@ -33,7 +34,7 @@ const BookClubPage = ({ setWishlist, wishlist,removeBook,cart, setCart }) => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get("https://bookverse-6s2i.onrender.com/web/api/books/books-view").then((res) => {
+    axios.get(`${API}/web/api/books/books-view`).then((res) => {
       const randomBook = Math.floor(Math.random() * 201);
       setProducts(res.data.productList);
       let BookData = res.data.productList[randomBook];
@@ -92,7 +93,7 @@ const handleLeaveClub = (id) => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await axios.delete(
-            `https://bookverse-6s2i.onrender.com/web/api/userInfo/userInfo-delete/${id}`,
+            `${API}/web/api/userInfo/userInfo-delete/${id}`,
             
           );
           
