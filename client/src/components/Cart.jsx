@@ -7,7 +7,9 @@ import { loadStripe } from "@stripe/stripe-js";
 // Load Stripe with your publishable key
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
+
 function CartPage({ cart, setCart }) {
+  const API = "https://bookverse-server-juw1.onrender.com";
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentStep, setPaymentStep] = useState("cart"); // 'cart' | 'payment' | 'confirmation'
   const [paymentMethod, setPaymentMethod] = useState(""); // 'online' | 'cod'
@@ -123,7 +125,7 @@ function CartPage({ cart, setCart }) {
     };
 
     const response = await axios.post(
-      "https://bookverse-6s2i.onrender.com/web/api/payment/create-payment-intent",
+      `${API}/web/api/payment/create-payment-intent`,
       paymentData
     );
 
@@ -187,7 +189,7 @@ console.log(orderData);
       // For Cash on Delivery
       if (paymentMethod === "cod") {
         const res = await axios.post(
-          "https://bookverse-6s2i.onrender.com/admin/order/order-insert",
+          `${API}/admin/order/order-insert`,
           orderData
         );
         
@@ -465,7 +467,7 @@ console.log(orderData);
                   <div key={item._id} className="p-4 flex">
                     <img
                 
-                       src={`https://bookverse-6s2i.onrender.com${item.image}`} 
+                       src={`${API}${item.image}`} 
                       alt={item.title}
                       className="w-20 h-28 object-cover rounded-lg mr-4"
                     />
