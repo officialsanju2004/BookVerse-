@@ -12,6 +12,7 @@ import RatingsDisplay from './RatingsDisplay';
 
 
 const JoinClub = ({ onJoin }) => {
+  const API = "https://bookverse-server-juw1.onrender.com";
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
@@ -50,7 +51,7 @@ const JoinClub = ({ onJoin }) => {
       toast.error("Incorrect email! Please use a Gmail address.");
       return;
     }
-    const otpRes = await axios.get("https://bookverse-6s2i.onrender.com/web/api/clubotp/clubotp-view");
+    const otpRes = await axios.get(`${API}/web/api/clubotp/clubotp-view`);
     const data = otpRes.data.otpList;
     const matchedUser = data.find(
           (item) => item.email.trim().toLowerCase() === userInfo.email.trim().toLowerCase()
@@ -64,7 +65,7 @@ const JoinClub = ({ onJoin }) => {
     onJoin(userInfo);
     
     await axios
-      .post("https://bookverse-6s2i.onrender.com/web/api/userInfo/userInfo-insert", userInfo)
+      .post(`${API}/web/api/userInfo/userInfo-insert`, userInfo)
       .then(async (res) => {
        
         const user = res.data.userList;
@@ -86,7 +87,7 @@ const JoinClub = ({ onJoin }) => {
         setJoined(true);
         localStorage.setItem('joined', 'true');
         try {
-              await axios.delete(`https://bookverse-6s2i.onrender.com/web/api/clubotp/clubotp-delete/${matchedUser._id}`);
+              await axios.delete(`${API}/web/api/clubotp/clubotp-delete/${matchedUser._id}`);
      
     } catch (deleteErr) {
       console.warn("Failed to delete OTP:", deleteErr);
@@ -104,7 +105,7 @@ const JoinClub = ({ onJoin }) => {
 
   const getAllUserdata = () => {
     axios
-      .get("https://bookverse-6s2i.onrender.com/web/api/userInfo/userInfo-view")
+      .get(`${API}/web/api/userInfo/userInfo-view`)
       .then((res) => {
         if (res.data.status === 1) {
           setUserData(res.data.userData);
@@ -131,7 +132,7 @@ const JoinClub = ({ onJoin }) => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await axios.delete(
-            `https://bookverse-6s2i.onrender.com/web/api/userInfo/userInfo-delete/${id}`,
+            `${API}/web/api/userInfo/userInfo-delete/${id}`,
             
           );
           
@@ -154,7 +155,7 @@ const JoinClub = ({ onJoin }) => {
   const otpNo = Math.floor(1000 + Math.random() * 9000);
  setOtp({otpGen:otpNo});
    axios
-      .post("https://bookverse-6s2i.onrender.com/web/api/clubotp/clubotp-insert",{otpGen:otpNo,email:userInfo.email})
+      .post(`${API}/web/api/clubotp/clubotp-insert`,{otpGen:otpNo,email:userInfo.email})
       .then((res) => {
        
       });
