@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link ,useParams} from 'react-router-dom';
 
 const ProductList = () => {
+     const API = "https://bookverse-server-juw1.onrender.com";
      const [productList, setproductList] = useState([]);
  let getAllproductList = () => {
     axios
-      .get("https://bookverse-6s2i.onrender.com/web/api/books/books-view")
+      .get(`${API}/web/api/books/books-view`)
       .then((res) => {
        
         if (res.data.status === 1) {
@@ -39,7 +40,7 @@ const ProductList = () => {
             <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="h-64 overflow-hidden">
                 <img 
-                  src={`https://bookverse-6s2i.onrender.com${book.image}`} 
+                  src={`${API}${book.image}`} 
                   alt={book.title} 
                   className="w-full h-full object-cover"
                   onError={(e) => {
