@@ -26,7 +26,7 @@ book,
             <img
               className="h-48 w-full object-cover md:w-48"
           
-               src={`http://localhost:8000${book.cover}`} 
+               src={`https://bookverse-6s2i.onrender.com${book.cover}`} 
               alt={`Cover of ${book.title}`}
             />
           </div>
