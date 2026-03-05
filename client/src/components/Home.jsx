@@ -31,7 +31,7 @@ import ReturnsAndRefund from "./ReturnsAndRefunds";
 import {  FiMenu, FiX } from "react-icons/fi";
 import HeroImage from "../Images/heroImage.png"
 import ShippingPolicy from "./ShippingPolicy";
-import Faqs from "./FAQS";
+import Faqs from "./Faqs";
 import Aboutus from "./Aboutus";
 import AIChatAssistant from "./AIChatAssistant";
 import AIRecommendations from "./AIRecommendations";
