@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FaShoppingCart, FaSearch, FaStar, FaRegStar, FaHeart, FaRegHeart } from 'react-icons/fa';
 // Wishlist Page Component
 function WishlistPage({ wishlist, toggleWishlist }) {
+    const API = "https://bookverse-server-juw1.onrender.com";
     return (
       <div id='wishlist'> 
         <h1 className="text-3xl font-bold mb-8">Your Wishlist</h1>
@@ -28,7 +29,7 @@ function WishlistPage({ wishlist, toggleWishlist }) {
               >
                 <Link to={`/book/${book._id}`}>
                   <img 
-                     src={`https://bookverse-6s2i.onrender.com${book.image}`}  
+                     src={`${API}${book.image}`}  
                     alt={book.title} 
                     className="w-full h-64 object-cover"
                   />
