@@ -65,4 +65,3 @@ res.status(200).json({ status: 1, mess: "otpList", otpList :otp});
 
 module.exports={ClubOtpInsert,ClubOtpView,ClubotpDelete};
 
-Me koi mood me nhi hoon process.env use krne me tu direct information bata bs kaya dalu
