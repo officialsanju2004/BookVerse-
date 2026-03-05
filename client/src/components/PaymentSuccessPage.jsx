@@ -8,6 +8,7 @@ function PaymentSuccess() {
   const navigate = useNavigate();
   const [orderDetails, setOrderDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  const API = "https://bookverse-server-juw1.onrender.com";
  const hasVerified = useRef(false);
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -25,7 +26,7 @@ function PaymentSuccess() {
   const verifyPayment = async (sessionId) => {
     try {
       const response = await axios.get(
-        `https://bookverse-6s2i.onrender.com/web/api/payment/verify-payment/${sessionId}`
+        `${API}web/api/payment/verify-payment/${sessionId}`
       );
       
       if (response.data.success) {
