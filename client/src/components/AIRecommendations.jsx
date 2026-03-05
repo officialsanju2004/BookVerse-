@@ -26,7 +26,7 @@ const AIRecommendations = ({ recommendations, onAddToCart, onToggleWishlist, wis
           
           <div className="relative"  >
             <img
-               src={`http://localhost:8000${book.image}`} 
+               src={`https://bookverse-6s2i.onrender.com${book.image}`} 
                onClick={() => {
                     window.location.href = `/book/${book._id}#bookdetail`;
                   }}
