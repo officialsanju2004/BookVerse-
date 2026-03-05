@@ -123,7 +123,7 @@ function CartPage({ cart, setCart }) {
     };
 
     const response = await axios.post(
-      "http://localhost:8000/web/api/payment/create-payment-intent",
+      "https://bookverse-6s2i.onrender.com/web/api/payment/create-payment-intent",
       paymentData
     );
 
@@ -187,7 +187,7 @@ console.log(orderData);
       // For Cash on Delivery
       if (paymentMethod === "cod") {
         const res = await axios.post(
-          "http://localhost:8000/admin/order/order-insert",
+          "https://bookverse-6s2i.onrender.com/admin/order/order-insert",
           orderData
         );
         
@@ -465,7 +465,7 @@ console.log(orderData);
                   <div key={item._id} className="p-4 flex">
                     <img
                 
-                       src={`http://localhost:8000${item.image}`} 
+                       src={`https://bookverse-6s2i.onrender.com${item.image}`} 
                       alt={item.title}
                       className="w-20 h-28 object-cover rounded-lg mr-4"
                     />
