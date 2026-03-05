@@ -11,7 +11,7 @@ const CommentsSection = ({ currentBook }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/web/api/comment/comment-view")
+      .get("https://bookverse-6s2i.onrender.com/web/api/comment/comment-view")
       .then((res) => {
         setComments(res.data);
       })
@@ -25,14 +25,14 @@ const CommentsSection = ({ currentBook }) => {
     e.preventDefault();
     if (newComment.trim()) {
       axios
-        .post("http://localhost:8000/web/api/comment/comment-insert", {
+        .post("https://bookverse-6s2i.onrender.com/web/api/comment/comment-insert", {
           name:newName,
           comment: newComment,
           date:new Date().toISOString()
         })
         .then((res) => {
           axios
-            .get("http://localhost:8000/web/api/comment/comment-view")
+            .get("https://bookverse-6s2i.onrender.com/web/api/comment/comment-view")
             .then((res) => {
               setComments(res.data);
             });
