@@ -782,7 +782,7 @@ const handleWebsiteRatingSubmit = async (e) => {
         scrollY > 50 ? "bg-white shadow-lg py-2" : "bg-transparent py-4"
       }`}
     >
-      <div id="home"data-aos="slide-down" className="container mx-auto px-6 flex justify-between items-center">
+      <div id="home"className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -935,7 +935,7 @@ const handleWebsiteRatingSubmit = async (e) => {
 
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <div data-aos="slide-down" className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+        <div  className="md:hidden bg-white border-t border-gray-200 shadow-lg">
           <div className="px-6 py-4 flex flex-col space-y-4">
             <Link to="/cart" onClick={() => setMenuOpen(false)}>
               🛒 Cart ({cart.length})
@@ -1306,9 +1306,9 @@ const handleWebsiteRatingSubmit = async (e) => {
               className="container mx-auto bg-white rounded-xl shadow-md p-6"
             >
       
-      <h2 data-aos="slide-left" className="text-2xl font-semibold text-indigo-700 mb-4">Ratings & Reviews</h2>
+      <h2  className="text-2xl font-semibold text-indigo-700 mb-4">Ratings & Reviews</h2>
       
-      <div data-aos="slide-right" className="flex items-center mb-6">
+      <div className="flex items-center mb-6">
         <div className="text-4xl font-bold mr-4">{String(averageRating)}</div>
         <div  className="flex">
           {[1, 2, 3, 4, 5].map((star) => (
@@ -1389,7 +1389,7 @@ const handleWebsiteRatingSubmit = async (e) => {
               transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
-              <h2 data-aos="fade up" className="text-4xl font-bold text-gray-900 mb-4">
+              <h2  className="text-4xl font-bold text-gray-900 mb-4">
                 What Our Readers Say
               </h2>
               <p data-aos="slide-up" className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -1397,7 +1397,7 @@ const handleWebsiteRatingSubmit = async (e) => {
               </p>
             </motion.div>
 
-            <div data-aos="slide-right" className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {websiteratingList.map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -1450,10 +1450,10 @@ const handleWebsiteRatingSubmit = async (e) => {
                 transition={{ duration: 0.8 }}
                 className="max-w-2xl mx-auto"
               >
-                <h2 data-aos="slide-right" className="text-3xl md:text-4xl font-bold text-white mb-4">
+                <h2  className="text-3xl md:text-4xl font-bold text-white mb-4">
                   Stay Updated
                 </h2>
-                <p data-aos="slide-left" className="text-xl text-indigo-100 mb-8">
+                <p  className="text-xl text-indigo-100 mb-8">
                   Subscribe to our newsletter for the latest releases, exclusive
                   deals, and literary news
                 </p>
@@ -1482,8 +1482,8 @@ const handleWebsiteRatingSubmit = async (e) => {
           </section>
         ) : (
           <div className="py-20 px-6 bg-gradient-to-r from-indigo-700 to-purple-700 text-center">
-            <h4 data-aos="slide-right" className="text-white mb-4">Thank You for Subscribing!</h4>
-            <div data-aos="slide-left" className="mb-6">
+            <h4  className="text-white mb-4">Thank You for Subscribing!</h4>
+            <div  className="mb-6">
               <svg
                 className="w-16 h-16 mx-auto text-green-900"
                 fill="none"
@@ -1514,14 +1514,14 @@ const handleWebsiteRatingSubmit = async (e) => {
           <div className="container mx-auto ">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-50 ">
               <div>
-                <h3 data-aos="slide-right" className="text-2xl font-bold text-white mb-6">
+                <h3  className="text-2xl font-bold text-white mb-6">
                   BookVerse
                 </h3>
-                <p  data-aos="slide-right" className="text-gray-400 mb-6">
+                <p   className="text-gray-400 mb-6">
                   Your gateway to a world of literature. Discover, read, and
                   enjoy.
                 </p>
-                <div data-aos="slide-right" className="flex space-x-4">
+                <div  className="flex space-x-4">
                   <motion.a
                     whileHover={{ y: -3 }}
                     href="mailto:godsanju21@gmail.com"
@@ -1564,7 +1564,7 @@ const handleWebsiteRatingSubmit = async (e) => {
                   </motion.a>
                 </div>
               </div>
-              <div data-aos="slide-right" className="mb-6 ">
+              <div  className="mb-6 ">
                 <h4 className="font-semibold mb-4">Quick Links</h4>
                 <ul className="space-y-2 mb-6">
                   <li>
@@ -1603,7 +1603,7 @@ const handleWebsiteRatingSubmit = async (e) => {
                 </ul>
               </div>
 
-              <div data-aos="slide-right">
+              <div >
                 <h4 className="text-lg font-semibold mb-6">Help</h4>
                 <div>
                   <ul className="space-y-2 ">
