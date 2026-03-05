@@ -9,7 +9,7 @@ const ClubMembers = ({ members }) => {
   
   useEffect(() => {
     axios
-      .get("http://localhost:8000/web/api/userInfo/userInfo-view")
+      .get("https://bookverse-6s2i.onrender.com/web/api/userInfo/userInfo-view")
       .then((res) => {
         setUserData(res.data);
       })
