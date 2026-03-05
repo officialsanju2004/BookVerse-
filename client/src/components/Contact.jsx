@@ -4,6 +4,7 @@ import axios from "axios";
 import { Mail, Phone, MapPin, Clock, Send, MessageSquare, User, BookOpen, Instagram, Facebook, Mail as MailIcon, MessageCircle } from "lucide-react";
 
 export default function Contactme() {
+  const API = "https://bookverse-server-juw1.onrender.com";
   let [enquiryList, setEnquiryList] = useState([]);
   
   let [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ export default function Contactme() {
     }
 
     axios
-      .post("https://bookverse-6s2i.onrender.com/web/api/enquiry/enquiry-insert", formData)
+      .post(`${API}/web/api/enquiry/enquiry-insert`, formData)
       .then((res) => {
         toast.success("Message Sent Successfully! We'll get back to you soon.");
         setFormData({ name: "", email: "", subject: "", message: "" });
@@ -41,7 +42,7 @@ export default function Contactme() {
 
   let getAllEnquiries = () => {
     axios
-      .get("https://bookverse-6s2i.onrender.com/web/api/enquiry/enquiry-view")
+      .get(`${API}/web/api/enquiry/enquiry-view`)
       .then((res) => {
         if (res.data.status === 1) {
           setEnquiryList(res.data.enquiryList);
