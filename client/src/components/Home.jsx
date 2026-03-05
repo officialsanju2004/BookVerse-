@@ -1093,10 +1093,10 @@ const handleWebsiteRatingSubmit = async (e) => {
                       transition={{ duration: 0.8 }}
                       className="text-center mb-16"
                     >
-                      <h2 data-aos="slide-right" className="text-4xl font-bold text-gray-900 mb-4">
+                      <h2 className="text-4xl font-bold text-gray-900 mb-4">
                         Featured Books
                       </h2>
-                      <p data-aos="slide-left" className="text-xl text-gray-600 max-w-2xl mx-auto">
+                      <p  className="text-xl text-gray-600 max-w-2xl mx-auto">
                         Handpicked selections from our collection that you might
                         love
                       </p>
@@ -1105,12 +1105,12 @@ const handleWebsiteRatingSubmit = async (e) => {
                     {aiRecommendations.length > 0 && productList.length > 0 && (
                       <div className="mb-12">
                         <div className="flex items-center justify-between mb-6">
-                          <h3 data-aos="slide-right" className="text-2xl font-bold text-gray-900 flex items-center">
+                          <h3  className="text-2xl font-bold text-gray-900 flex items-center">
                             <BsStars className="text-indigo-600 mr-2" />
                             AI-Personalized For You
                           </h3>
                           <button
-                          data-aos="slide-left"
+                          
                             onClick={getAIRecommendations}
                             className="text-indigo-600 hover:text-indigo-800 flex items-center text-sm"
                           >
@@ -1130,7 +1130,7 @@ const handleWebsiteRatingSubmit = async (e) => {
                     )}
                     {/* Category Filter */}
                     <div ref={Categories} className="mb-8">
-                      <h2 data-aos="slide-right" className="text-2xl font-semibold mb-4">
+                      <h2  className="text-2xl font-semibold mb-4">
                         Categories
                       </h2>
                       <div className="flex flex-wrap gap-2">
@@ -1151,7 +1151,7 @@ const handleWebsiteRatingSubmit = async (e) => {
                     </div>
                     {filteredBooks.length === 0 ? (
                       <div className="text-center py-12">
-                        <p data-aos="slide-right" className="text-gray-500 text-lg">
+                        <p className="text-gray-500 text-lg">
                           No productList found matching your criteria.
                         </p>
                       </div>
