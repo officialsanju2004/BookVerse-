@@ -29,7 +29,7 @@ export default function UserOrders({ userId }) {
         return;
       }
 
-      const res = await axios.get(`http://localhost:8000/admin/order/order-view/${userId}`);
+      const res = await axios.get(`https://bookverse-6s2i.onrender.com/admin/order/order-view/${userId}`);
       setOrders(res.data);
     } catch (err) {
       console.error("Error fetching orders:", err);
