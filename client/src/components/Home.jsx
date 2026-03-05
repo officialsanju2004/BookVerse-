@@ -672,7 +672,7 @@ const handleWebsiteRatingSubmit = async (e) => {
           
         };
 
-        const response = await axios.post('${API}/web/api/websiterating/websiterating-insert', websitRatingData);
+        const response = await axios.post(`${API}/web/api/websiterating/websiterating-insert`, websitRatingData);
         
        
           toast.success('Rating submitted successfully!');
@@ -697,7 +697,7 @@ const handleWebsiteRatingSubmit = async (e) => {
   const fetchWebsiteRatings = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('${API}/web/api/websiterating/websiterating-view');
+      const response = await axios.get(`${API}/web/api/websiterating/websiterating-view`);
       if (response.data.status === 1) {
         setWebsiteratingList(response.data.websiteratingList); 
       } else {
@@ -1170,7 +1170,7 @@ const handleWebsiteRatingSubmit = async (e) => {
                             <Link to={`/book/${book._id}#bookdetail`}>
                               <div className="relative">
                                 <img
-                                 src={`https://bookverse-6s2i.onrender.com${book.image}`} 
+                                 src={`${API}${book.image}`} 
                                   alt={book.title}
                                   className="w-full h-64 object-cover"
                                 />
