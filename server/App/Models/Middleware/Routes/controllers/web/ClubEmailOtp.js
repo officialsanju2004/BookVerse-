@@ -32,7 +32,7 @@ const ClubOtpInsert=(async (req, res) => {
   
      
       const mailOptions = {
-          from:process.env.EMAIL_USER
+          from:process.env.EMAIL_USER,
           to: otpData.email,
           subject: `Email Verification for BookVerse Club SignUp form `,
           text: `Hello ${otpData.email},\n\nYour OTP for Email verification is : ${otpData.otpGen}\n\nPlease Fill this otp to the otp input textbox!.`,
