@@ -13,7 +13,7 @@ function BookDetail({ books,
     const [quantity, setQuantity] = useState(1);
     const [loading,setLoading]=useState(true);
     const [book,setBook]=useState(null);
-  
+  const API = "https://bookverse-server-juw1.onrender.com";
     
 useEffect(()=>{
   if(!Array.isArray(books)){
@@ -82,7 +82,7 @@ if(loading) {
             <div className="md:w-1/3 p-6">
               <div className="relative">
                 <img 
-                   src={`https://bookverse-6s2i.onrender.com${book.image}`}  
+                   src={`${API}${book.image}`}  
                   alt={book.title} 
                   className="w-full h-auto rounded-lg shadow-md"
                 />
