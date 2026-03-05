@@ -84,7 +84,7 @@ const handleLogOut = async () => {
       toast.error("No user email found for logout.");
       return;
     }
-const response = await axios.get(`http://localhost:8000/web/api/login/login-view`);
+const response = await axios.get(`https://bookverse-6s2i.onrender.com/web/api/login/login-view`);
     const userList = response.data.loginList || [];
 
     const matchingUsers = userList.filter(
@@ -98,7 +98,7 @@ const response = await axios.get(`http://localhost:8000/web/api/login/login-view
 
     await Promise.all(
       matchingUsers.map((user) =>
-        axios.delete(`http://localhost:8000/web/api/login/login-delete/${user._id}`)
+        axios.delete(`https://bookverse-6s2i.onrender.com/web/api/login/login-delete/${user._id}`)
       )
     );
 
@@ -184,7 +184,7 @@ const response = await axios.get(`http://localhost:8000/web/api/login/login-view
 // 🔥 GOOGLE LOGIN LOGIC (IMPORTANT)
   const googleLogin = async (googleToken) => {
     try {
-      const res = await axios.post("http://localhost:8000/web/api/login/google", {
+      const res = await axios.post("https://bookverse-6s2i.onrender.com/web/api/login/google", {
         token: googleToken,
       });
 
@@ -219,7 +219,7 @@ const response = await axios.get(`http://localhost:8000/web/api/login/login-view
   }
 
   try {
-    const otpRes = await axios.get("http://localhost:8000/web/api/otp/otp-view");
+    const otpRes = await axios.get("https://bookverse-6s2i.onrender.com/web/api/otp/otp-view");
     const data = otpRes.data.otpList;
 
     const matchedUser = data.find(
@@ -231,7 +231,7 @@ const response = await axios.get(`http://localhost:8000/web/api/login/login-view
       return;
     }
 
-    const res = await axios.post("http://localhost:8000/web/api/login/login-insert", formData);
+    const res = await axios.post("https://bookverse-6s2i.onrender.com/web/api/login/login-insert", formData);
     const user = res.data.loginData;
 
     if (!user || !user._id) {
@@ -253,7 +253,7 @@ const response = await axios.get(`http://localhost:8000/web/api/login/login-view
     localStorage.setItem("lastEmail", formData.email);
     toast.success("Sign up successful!");
     try {
-      await axios.delete(`http://localhost:8000/web/api/otp/otp-delete/${matchedUser._id}`);
+      await axios.delete(`https://bookverse-6s2i.onrender.com/web/api/otp/otp-delete/${matchedUser._id}`);
      
     } catch (deleteErr) {
       console.warn("Failed to delete OTP:", deleteErr);
@@ -272,7 +272,7 @@ const response = await axios.get(`http://localhost:8000/web/api/login/login-view
   const otpNo = Math.floor(1000 + Math.random() * 9000);
  setOtp({otpGen:otpNo});
    axios
-      .post("http://localhost:8000/web/api/otp/otp-insert",{otpGen:otpNo,email:formData.email})
+      .post("https://bookverse-6s2i.onrender.com/web/api/otp/otp-insert",{otpGen:otpNo,email:formData.email})
       .then((res) => {
        
       });
