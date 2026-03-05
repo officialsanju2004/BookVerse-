@@ -6,7 +6,7 @@ const ProductList = () => {
      const [productList, setproductList] = useState([]);
  let getAllproductList = () => {
     axios
-      .get("http://localhost:8000/web/api/books/books-view")
+      .get("https://bookverse-6s2i.onrender.com/web/api/books/books-view")
       .then((res) => {
        
         if (res.data.status === 1) {
@@ -39,7 +39,7 @@ const ProductList = () => {
             <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <div className="h-64 overflow-hidden">
                 <img 
-                  src={`http://localhost:8000${book.image}`} 
+                  src={`https://bookverse-6s2i.onrender.com${book.image}`} 
                   alt={book.title} 
                   className="w-full h-full object-cover"
                   onError={(e) => {
