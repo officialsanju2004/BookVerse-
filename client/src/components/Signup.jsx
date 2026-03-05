@@ -10,6 +10,7 @@ import { GoogleLogin } from "@react-oauth/google";
 
 
 export default function SignUp({isLogined,setIsLogined}) {
+  const API = "https://bookverse-server-juw1.onrender.com";
   const [formData, setFormData] = useState({
     
     name: "",
@@ -84,7 +85,7 @@ const handleLogOut = async () => {
       toast.error("No user email found for logout.");
       return;
     }
-const response = await axios.get(`https://bookverse-6s2i.onrender.com/web/api/login/login-view`);
+const response = await axios.get(`${API}/web/api/login/login-view`);
     const userList = response.data.loginList || [];
 
     const matchingUsers = userList.filter(
@@ -98,7 +99,7 @@ const response = await axios.get(`https://bookverse-6s2i.onrender.com/web/api/lo
 
     await Promise.all(
       matchingUsers.map((user) =>
-        axios.delete(`https://bookverse-6s2i.onrender.com/web/api/login/login-delete/${user._id}`)
+        axios.delete(`${API}/web/api/login/login-delete/${user._id}`)
       )
     );
 
@@ -184,7 +185,7 @@ const response = await axios.get(`https://bookverse-6s2i.onrender.com/web/api/lo
 // 🔥 GOOGLE LOGIN LOGIC (IMPORTANT)
   const googleLogin = async (googleToken) => {
     try {
-      const res = await axios.post("https://bookverse-6s2i.onrender.com/web/api/login/google", {
+      const res = await axios.post(`${API}/web/api/login/google`, {
         token: googleToken,
       });
 
@@ -219,7 +220,7 @@ const response = await axios.get(`https://bookverse-6s2i.onrender.com/web/api/lo
   }
 
   try {
-    const otpRes = await axios.get("https://bookverse-6s2i.onrender.com/web/api/otp/otp-view");
+    const otpRes = await axios.get(`${API}/web/api/otp/otp-view`);
     const data = otpRes.data.otpList;
 
     const matchedUser = data.find(
@@ -231,7 +232,7 @@ const response = await axios.get(`https://bookverse-6s2i.onrender.com/web/api/lo
       return;
     }
 
-    const res = await axios.post("https://bookverse-6s2i.onrender.com/web/api/login/login-insert", formData);
+    const res = await axios.post(`${API}/web/api/login/login-insert`, formData);
     const user = res.data.loginData;
 
     if (!user || !user._id) {
@@ -253,7 +254,7 @@ const response = await axios.get(`https://bookverse-6s2i.onrender.com/web/api/lo
     localStorage.setItem("lastEmail", formData.email);
     toast.success("Sign up successful!");
     try {
-      await axios.delete(`https://bookverse-6s2i.onrender.com/web/api/otp/otp-delete/${matchedUser._id}`);
+      await axios.delete(`${API}/web/api/otp/otp-delete/${matchedUser._id}`);
      
     } catch (deleteErr) {
       console.warn("Failed to delete OTP:", deleteErr);
@@ -272,7 +273,7 @@ const response = await axios.get(`https://bookverse-6s2i.onrender.com/web/api/lo
   const otpNo = Math.floor(1000 + Math.random() * 9000);
  setOtp({otpGen:otpNo});
    axios
-      .post("https://bookverse-6s2i.onrender.com/web/api/otp/otp-insert",{otpGen:otpNo,email:formData.email})
+      .post(`${API}/web/api/otp/otp-insert`,{otpGen:otpNo,email:formData.email})
       .then((res) => {
        
       });
