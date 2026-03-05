@@ -636,7 +636,7 @@ return ()=>clearInterval(interval);
 
 let ImageCarouselView = () => {
     axios
-      .get(`${API}web/api/ImageCarousel/ImageCarousel-view`)
+      .get(`${API}/web/api/ImageCarousel/ImageCarousel-view`)
       .then((res) => {
        
         if (res.data.status === 1) {
