@@ -7,7 +7,7 @@ export default function AdminLogin({ setIsAdmin }) {
     username: "",
     password: "",
   });
-
+const API = "https://bookverse-server-juw1.onrender.com";
   const [updateFormData, setUpdateFormData] = useState({
     currentUsername: "",
     newUsername: "",
@@ -38,7 +38,7 @@ const [mainForm,setMainForm]=useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await axios.post("http://localhost:8000/api/admin/login", formData);
+      let res = await axios.post(`${API}/api/admin/login`, formData);
    
      
       localStorage.setItem("token", res.data.token);
@@ -53,7 +53,7 @@ const [mainForm,setMainForm]=useState(false);
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/web/api/admin/admin-update", updateFormData);
+      await axios.post(`${API}/web/api/admin/admin-update`, updateFormData);
       toast.success("Credentials Updated!");
       setUpdateFormData({
     currentUsername: "",
@@ -70,7 +70,7 @@ const [mainForm,setMainForm]=useState(false);
   const handleForgotSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/web/api/admin/forgot-password", {
+      await axios.post(`${API}/web/api/admin/forgot-password`, {
         username: forgotData.username,
       });
       toast.info("OTP sent to your registered email!");
@@ -86,7 +86,7 @@ const [mainForm,setMainForm]=useState(false);
   const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/web/api/admin/reset-password", forgotData);
+      await axios.post(`${API}/web/api/admin/reset-password`, forgotData);
       toast.success("Password reset successful!");
      
       setForgotTab(false);
