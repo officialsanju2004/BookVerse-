@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function UserOrders({ userId }) {
   const [orders, setOrders] = useState([]);
-
+const API = "https://bookverse-server-juw1.onrender.com";
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -29,7 +29,7 @@ export default function UserOrders({ userId }) {
         return;
       }
 
-      const res = await axios.get(`https://bookverse-6s2i.onrender.com/admin/order/order-view/${userId}`);
+      const res = await axios.get(`${API}/admin/order/order-view/${userId}`);
       setOrders(res.data);
     } catch (err) {
       console.error("Error fetching orders:", err);
