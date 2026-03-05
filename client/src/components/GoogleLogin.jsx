@@ -2,10 +2,11 @@ import axios from 'axios';
 import { GoogleLogin } from "@react-oauth/google";
 
 const GoogleLoginButton = () => {
+  const API = "https://bookverse-server-juw1.onrender.com";
   const handleSuccess = async (credentialResponse) => {
     try {
       const res = await axios.post(
-        "https://bookverse-6s2i.onrender.com/api/auth/google",
+        `${API}/api/auth/google`,
         { token: credentialResponse.credential }
       );
 
