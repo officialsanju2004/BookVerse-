@@ -478,7 +478,7 @@ const navigate=useNavigate();
     }
 
     axios
-      .post("http://localhost:8000/web/api/subscriber/subscriber-insert", email)
+      .post("https://bookverse-6s2i.onrender.com/web/api/subscriber/subscriber-insert", email)
       .then((res) => {
        
         toast.success("You are Subscribed!!");
@@ -498,7 +498,7 @@ const shuffleArray=(array)=>{
 }
   let getAllproductList = () => {
     axios
-      .get("http://localhost:8000/web/api/books/books-view")
+      .get("https://bookverse-6s2i.onrender.com/web/api/books/books-view")
       .then((res) => {
        
         if (res.data.status === 1) {
@@ -635,7 +635,7 @@ return ()=>clearInterval(interval);
 
 let ImageCarouselView = () => {
     axios
-      .get("http://localhost:8000/web/api/ImageCarousel/ImageCarousel-view")
+      .get("https://bookverse-6s2i.onrender.com/web/api/ImageCarousel/ImageCarousel-view")
       .then((res) => {
        
         if (res.data.status === 1) {
@@ -671,7 +671,7 @@ const handleWebsiteRatingSubmit = async (e) => {
           
         };
 
-        const response = await axios.post('http://localhost:8000/web/api/websiterating/websiterating-insert', websitRatingData);
+        const response = await axios.post('https://bookverse-6s2i.onrender.com/web/api/websiterating/websiterating-insert', websitRatingData);
         
        
           toast.success('Rating submitted successfully!');
@@ -696,7 +696,7 @@ const handleWebsiteRatingSubmit = async (e) => {
   const fetchWebsiteRatings = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('http://localhost:8000/web/api/websiterating/websiterating-view');
+      const response = await axios.get('https://bookverse-6s2i.onrender.com/web/api/websiterating/websiterating-view');
       if (response.data.status === 1) {
         setWebsiteratingList(response.data.websiteratingList); 
       } else {
@@ -1169,7 +1169,7 @@ const handleWebsiteRatingSubmit = async (e) => {
                             <Link to={`/book/${book._id}#bookdetail`}>
                               <div className="relative">
                                 <img
-                                 src={`http://localhost:8000${book.image}`} 
+                                 src={`https://bookverse-6s2i.onrender.com${book.image}`} 
                                   alt={book.title}
                                   className="w-full h-64 object-cover"
                                 />
