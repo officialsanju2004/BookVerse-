@@ -33,7 +33,7 @@ const BookClubPage = ({ setWishlist, wishlist,removeBook,cart, setCart }) => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get("http://localhost:8000/web/api/books/books-view").then((res) => {
+    axios.get("https://bookverse-6s2i.onrender.com/web/api/books/books-view").then((res) => {
       const randomBook = Math.floor(Math.random() * 201);
       setProducts(res.data.productList);
       let BookData = res.data.productList[randomBook];
@@ -92,7 +92,7 @@ const handleLeaveClub = (id) => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await axios.delete(
-            `http://localhost:8000/web/api/userInfo/userInfo-delete/${id}`,
+            `https://bookverse-6s2i.onrender.com/web/api/userInfo/userInfo-delete/${id}`,
             
           );
           
