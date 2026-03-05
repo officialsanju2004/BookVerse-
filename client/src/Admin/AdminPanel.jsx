@@ -41,6 +41,7 @@ export default function AdminPanel({ setIsAdmin }) {
     orderId: null,
     actualpayment: "",
   });
+  const API = "https://bookverse-server-juw1.onrender.com";
   const [otpInput, setOtpInput] = useState("");
   const [activeTab, setActiveTab] = useState("admin");
   const [subscriberList, setSubscriberList] = useState([]);
@@ -262,7 +263,7 @@ export default function AdminPanel({ setIsAdmin }) {
   const handleImageCarouselSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await axios.post("http://localhost:8000/web/api/ImageCarousel/ImageCarousel-insert", ImageCarouselData);
+      let res = await axios.post(`${API}/web/api/ImageCarousel/ImageCarousel-insert`, ImageCarouselData);
       setImageCarouselData({ image: "" });
       toast.success("Image Added Successfully!");
     } catch (error) {
@@ -272,7 +273,7 @@ export default function AdminPanel({ setIsAdmin }) {
 
   const getImageCarousel = async () => {
     axios
-      .get("http://localhost:8000/web/api/ImageCarousel/ImageCarousel-view")
+      .get(`${API}/web/api/ImageCarousel/ImageCarousel-view`)
       .then((res) => {
         if (res.data.status === 1) {
           setImageCarousel(res.data.imageCarouselList);
@@ -295,7 +296,7 @@ export default function AdminPanel({ setIsAdmin }) {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await axios.delete(
-            `http://localhost:8000/web/api/ImageCarousel/ImageCarousel-view/${id}`,
+            `${API}/web/api/ImageCarousel/ImageCarousel-view/${id}`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
           getImageCarousel();
@@ -320,7 +321,7 @@ export default function AdminPanel({ setIsAdmin }) {
   const fetchOrders = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:8000/admin/order/order-view"
+        `${API}/admin/order/order-view`
       );
       setOrders(res.data);
       console.log(res.data)
@@ -331,7 +332,7 @@ export default function AdminPanel({ setIsAdmin }) {
 
   const updateStatus = async (orderId, status, actualpayment = null) => {
     try {
-      await axios.put(`http://localhost:8000/admin/order/${orderId}/status`, {
+      await axios.put(`${API}/admin/order/${orderId}/status`, {
         status,
         actualpayment,
       });
@@ -362,7 +363,7 @@ export default function AdminPanel({ setIsAdmin }) {
 
   const fetchBooks = async () => {
     axios
-      .get("http://localhost:8000/web/api/books/books-view")
+      .get(`${API}/web/api/books/books-view`)
       .then((res) => {
         if (res.data.status === 1) {
           setBooks(res.data.productList);
@@ -377,7 +378,7 @@ export default function AdminPanel({ setIsAdmin }) {
 
   const fetchsubscriberList = async () => {
     axios
-      .get("http://localhost:8000/web/api/subscriber/subscriber-view")
+      .get(`${API}/web/api/subscriber/subscriber-view`)
       .then((res) => {
         if (res.data.status === 1) {
           setSubscriberList(res.data.subscriberList);
@@ -410,7 +411,7 @@ export default function AdminPanel({ setIsAdmin }) {
         if (result.isConfirmed) {
           try {
             await axios.put(
-              ` http://localhost:8000/web/api/books/product-update/${formData._id}`,
+              `${API}/web/api/books/product-update/${formData._id}`,
               formData,
               { headers: { Authorization: `Bearer ${token} ` } }
             );
@@ -452,7 +453,7 @@ export default function AdminPanel({ setIsAdmin }) {
 
         try {
           await axios.post(
-            `http://localhost:8000/web/api/books/books-insert`,
+            `${API}/web/api/books/books-insert`,
             dataToInsert,
             { headers: { Authorization: `Bearer ${token}` } }
           );
@@ -495,7 +496,7 @@ export default function AdminPanel({ setIsAdmin }) {
 
   const handleUpdate = (book) => {
     axios
-      .get(`http://localhost:8000/web/api/books/books-update/${book}`)
+      .get(`${API}/web/api/books/books-update/${book}`)
       .then((res) => {
         let data = res.data.product;
         if (data.publicationDate) {
@@ -517,7 +518,7 @@ export default function AdminPanel({ setIsAdmin }) {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await axios.delete(
-            `http://localhost:8000/web/api/books/books-delete/${id}`,
+            `${API}/web/api/books/books-delete/${id}`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
           fetchBooks();
@@ -562,7 +563,7 @@ export default function AdminPanel({ setIsAdmin }) {
       }).then(async (result) => {
         if (result.isConfirmed) {
           await axios.delete(
-            `http://localhost:8000/web/api/subscriber/subscriber-delete/${id}`,
+            `${API}/web/api/subscriber/subscriber-delete/${id}`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
           fetchsubscriberList();
