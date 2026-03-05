@@ -82,7 +82,7 @@ if(loading) {
             <div className="md:w-1/3 p-6">
               <div className="relative">
                 <img 
-                   src={`http://localhost:8000${book.image}`}  
+                   src={`https://bookverse-6s2i.onrender.com${book.image}`}  
                   alt={book.title} 
                   className="w-full h-auto rounded-lg shadow-md"
                 />
