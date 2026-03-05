@@ -86,6 +86,7 @@ const [websiteratingList, setWebsiteratingList]=useState([]);
      const [menuOpen, setMenuOpen] = useState(false);
   
    const[websiteData,setWebsiteData]=useState({author:"",reviewText:""})
+  const API = "https://bookverse-server-juw1.onrender.com";
 const navigate=useNavigate();
   let [email, setEmail] = useState({
     email: "",
@@ -478,7 +479,7 @@ const navigate=useNavigate();
     }
 
     axios
-      .post("https://bookverse-6s2i.onrender.com/web/api/subscriber/subscriber-insert", email)
+      .post(`${API}/web/api/subscriber/subscriber-insert`, email)
       .then((res) => {
        
         toast.success("You are Subscribed!!");
@@ -498,7 +499,7 @@ const shuffleArray=(array)=>{
 }
   let getAllproductList = () => {
     axios
-      .get("https://bookverse-6s2i.onrender.com/web/api/books/books-view")
+      .get(`${API}/web/api/books/books-view`)
       .then((res) => {
        
         if (res.data.status === 1) {
@@ -635,7 +636,7 @@ return ()=>clearInterval(interval);
 
 let ImageCarouselView = () => {
     axios
-      .get("https://bookverse-6s2i.onrender.com/web/api/ImageCarousel/ImageCarousel-view")
+      .get(`${API}web/api/ImageCarousel/ImageCarousel-view`)
       .then((res) => {
        
         if (res.data.status === 1) {
@@ -671,7 +672,7 @@ const handleWebsiteRatingSubmit = async (e) => {
           
         };
 
-        const response = await axios.post('https://bookverse-6s2i.onrender.com/web/api/websiterating/websiterating-insert', websitRatingData);
+        const response = await axios.post('${API}/web/api/websiterating/websiterating-insert', websitRatingData);
         
        
           toast.success('Rating submitted successfully!');
@@ -696,7 +697,7 @@ const handleWebsiteRatingSubmit = async (e) => {
   const fetchWebsiteRatings = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('https://bookverse-6s2i.onrender.com/web/api/websiterating/websiterating-view');
+      const response = await axios.get('${API}/web/api/websiterating/websiterating-view');
       if (response.data.status === 1) {
         setWebsiteratingList(response.data.websiteratingList); 
       } else {
