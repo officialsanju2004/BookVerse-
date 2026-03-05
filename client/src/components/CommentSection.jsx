@@ -7,11 +7,11 @@ const CommentsSection = ({ currentBook }) => {
   const [newComment, setNewComment] = useState('');
   const [newName, setNewName] = useState('');
   
-
+const API = "https://bookverse-server-juw1.onrender.com";
 
   useEffect(() => {
     axios
-      .get("https://bookverse-6s2i.onrender.com/web/api/comment/comment-view")
+      .get(`${API}/web/api/comment/comment-view`)
       .then((res) => {
         setComments(res.data);
       })
@@ -25,14 +25,14 @@ const CommentsSection = ({ currentBook }) => {
     e.preventDefault();
     if (newComment.trim()) {
       axios
-        .post("https://bookverse-6s2i.onrender.com/web/api/comment/comment-insert", {
+        .post(`${API}/web/api/comment/comment-insert`, {
           name:newName,
           comment: newComment,
           date:new Date().toISOString()
         })
         .then((res) => {
           axios
-            .get("https://bookverse-6s2i.onrender.com/web/api/comment/comment-view")
+            .get(`${API}\web/api/comment/comment-view`)
             .then((res) => {
               setComments(res.data);
             });
