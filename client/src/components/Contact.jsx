@@ -26,7 +26,7 @@ export default function Contactme() {
     }
 
     axios
-      .post("http://localhost:8000/web/api/enquiry/enquiry-insert", formData)
+      .post("https://bookverse-6s2i.onrender.com/web/api/enquiry/enquiry-insert", formData)
       .then((res) => {
         toast.success("Message Sent Successfully! We'll get back to you soon.");
         setFormData({ name: "", email: "", subject: "", message: "" });
@@ -41,7 +41,7 @@ export default function Contactme() {
 
   let getAllEnquiries = () => {
     axios
-      .get("http://localhost:8000/web/api/enquiry/enquiry-view")
+      .get("https://bookverse-6s2i.onrender.com/web/api/enquiry/enquiry-view")
       .then((res) => {
         if (res.data.status === 1) {
           setEnquiryList(res.data.enquiryList);
