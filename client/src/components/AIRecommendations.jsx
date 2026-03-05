@@ -4,6 +4,7 @@ import { RiAiGenerate } from 'react-icons/ri';
 import { BsStars } from 'react-icons/bs';
 
 const AIRecommendations = ({ recommendations, onAddToCart, onToggleWishlist, wishlist, onGenerateSummary }) => {
+  const API = "https://bookverse-server-juw1.onrender.com";
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -26,7 +27,7 @@ const AIRecommendations = ({ recommendations, onAddToCart, onToggleWishlist, wis
           
           <div className="relative"  >
             <img
-               src={`https://bookverse-6s2i.onrender.com${book.image}`} 
+               src={`${API}${book.image}`} 
                onClick={() => {
                     window.location.href = `/book/${book._id}#bookdetail`;
                   }}
