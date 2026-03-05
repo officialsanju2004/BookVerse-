@@ -16,7 +16,7 @@ book,
 }) => {
 
 
-
+const API = "https://bookverse-server-juw1.onrender.com";
 
   return (
     <>
@@ -26,7 +26,7 @@ book,
             <img
               className="h-48 w-full object-cover md:w-48"
           
-               src={`https://bookverse-6s2i.onrender.com${book.cover}`} 
+               src={`${API}${book.cover}`} 
               alt={`Cover of ${book.title}`}
             />
           </div>
