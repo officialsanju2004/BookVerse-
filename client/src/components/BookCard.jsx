@@ -16,7 +16,7 @@ book,
 }) => {
 
 
-const API = "https://bookverse-server-juw1.onrender.com";
+const API = "https://book-verse-snowy.vercel.app";
 
   return (
     <>
