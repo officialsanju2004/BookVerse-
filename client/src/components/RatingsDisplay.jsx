@@ -14,7 +14,7 @@ const RatingsDisplay = ({ onAddRating, bookId }) => {
   const [isLoading, setIsLoading] = useState(false);
    const[author,setAuthor]=useState('');
 
-const API = "https://bookverse-server-juw1.onrender.com";
+const API = "https://book-verse-snowy.vercel.app";
   // Fetch ratings from backend
   const fetchRatings = async () => {
     setIsLoading(true);
