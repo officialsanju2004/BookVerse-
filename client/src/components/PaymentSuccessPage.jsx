@@ -8,7 +8,7 @@ function PaymentSuccess() {
   const navigate = useNavigate();
   const [orderDetails, setOrderDetails] = useState(null);
   const [loading, setLoading] = useState(true);
-  const API = "https://bookverse-server-juw1.onrender.com";
+  const API = "https://book-verse-snowy.vercel.app";
  const hasVerified = useRef(false);
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
