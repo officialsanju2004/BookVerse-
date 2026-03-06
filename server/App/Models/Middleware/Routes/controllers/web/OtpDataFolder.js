@@ -6,9 +6,8 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "bably1937@gmail.com",
-
-    pass: "fjup jvkd olzl osyz", //app password
+    user: process.env.EMAIL_USER,  // ✅ env variable use karo
+    pass: process.env.EMAIL_PASS,  // ✅ env variable use karo
   },
 });
 const OtpInsert=(async (req, res) => {
