@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { FaShoppingCart, FaSearch, FaStar, FaRegStar, FaHeart, FaRegHeart } from 'react-icons/fa';
 // Wishlist Page Component
 function WishlistPage({ wishlist, toggleWishlist }) {
-    const API = "https://bookverse-server-juw1.onrender.com";
+    const API = "https://book-verse-snowy.vercel.app";
     return (
       <div id='wishlist'> 
         <h1 className="text-3xl font-bold mb-8">Your Wishlist</h1>
