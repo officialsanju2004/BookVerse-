@@ -4,7 +4,7 @@ import { RiAiGenerate } from 'react-icons/ri';
 import { BsStars } from 'react-icons/bs';
 
 const AIRecommendations = ({ recommendations, onAddToCart, onToggleWishlist, wishlist, onGenerateSummary }) => {
-  const API = "https://bookverse-server-juw1.onrender.com";
+  const API = "https://book-verse-snowy.vercel.app";
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
