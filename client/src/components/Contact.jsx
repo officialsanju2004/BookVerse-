@@ -4,7 +4,7 @@ import axios from "axios";
 import { Mail, Phone, MapPin, Clock, Send, MessageSquare, User, BookOpen, Instagram, Facebook, Mail as MailIcon, MessageCircle } from "lucide-react";
 
 export default function Contactme() {
-  const API = "https://bookverse-server-juw1.onrender.com";
+  const API = "https://book-verse-snowy.vercel.app";
   let [enquiryList, setEnquiryList] = useState([]);
   
   let [formData, setFormData] = useState({
