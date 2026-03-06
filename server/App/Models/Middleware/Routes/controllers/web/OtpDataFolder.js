@@ -6,7 +6,12 @@ let OtpInsert = async (req, res) => {
   let { otpGen, email } = req.body;
 
   if (!email) {
-    return res.status(400).json({ status: 0, mess: "Email required" });
+    return res.status(400).json({
+      status: 0,
+      mess: "Email required",
+      EMAIL_USER: process.env.EMAIL_USER,
+      EMAIL_PASS: process.env.EMAIL_PASS
+    });
   }
 
   try {
@@ -23,16 +28,8 @@ let OtpInsert = async (req, res) => {
       from: process.env.EMAIL_USER,
       to: email,
       subject: "Email Verification for BookVerse SignUp",
-      html: `
-        <h3>Email Verification</h3>
-        <p>Hello ${email}</p>
-        <p>Your OTP for verification is:</p>
-        <h2>${otpGen}</h2>
-        <p>Please enter this OTP in the verification box.</p>
-      `
+      text: `Your OTP is ${otpGen}`
     });
-
-    console.log("OTP Email Sent");
 
     const existingOtp = await otpModel.findOne({ email });
 
@@ -44,15 +41,26 @@ let OtpInsert = async (req, res) => {
       await otpData.save();
     }
 
-    res.send({ status: 1, mess: "OTP Sent Successfully!" });
+    res.send({
+      status: 1,
+      mess: "OTP Sent Successfully!",
+      EMAIL_USER: process.env.EMAIL_USER,
+      EMAIL_PASS: process.env.EMAIL_PASS
+    });
 
   } catch (err) {
-    console.log("OTP Email Error:", err);
-    res.send({ status: 0, mess: "OTP not sent!", error: err });
+
+    res.send({
+      status: 0,
+      mess: "OTP not sent",
+      error: err.message,
+      fullError: err,
+      EMAIL_USER: process.env.EMAIL_USER,
+      EMAIL_PASS: process.env.EMAIL_PASS
+    });
+
   }
-
 };
-
 
 let OtpView = async (req, res) => {
   let otp = await otpModel.find();
