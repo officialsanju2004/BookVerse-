@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GoogleLogin } from "@react-oauth/google";
 
 const GoogleLoginButton = () => {
-  const API = "https://bookverse-server-juw1.onrender.com";
+  const API = "https://book-verse-snowy.vercel.app";
   const handleSuccess = async (credentialResponse) => {
     try {
       const res = await axios.post(
