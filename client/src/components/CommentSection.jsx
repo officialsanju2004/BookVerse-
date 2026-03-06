@@ -7,7 +7,7 @@ const CommentsSection = ({ currentBook }) => {
   const [newComment, setNewComment] = useState('');
   const [newName, setNewName] = useState('');
   
-const API = "https://bookverse-server-juw1.onrender.com";
+const API = "https://book-verse-snowy.vercel.app";
 
   useEffect(() => {
     axios
