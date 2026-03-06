@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function UserOrders({ userId }) {
   const [orders, setOrders] = useState([]);
-const API = "https://bookverse-server-juw1.onrender.com";
+const API = "https://book-verse-snowy.vercel.app";
   useEffect(() => {
     fetchOrders();
   }, []);
