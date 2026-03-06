@@ -1,66 +1,70 @@
 const otpModel = require("../../../../OtpSignUpModel");
-
 const nodemailer = require("nodemailer");
 
+let OtpInsert = async (req, res) => {
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,  // ✅ env variable use karo
-    pass: process.env.EMAIL_PASS,  // ✅ env variable use karo
-  },
-});
-const OtpInsert=(async (req, res) => {
-  let { otpGen,email } = req.body; 
-  
-  let otpData = new otpModel({
-     otpGen,email
-   
-  });
-  if(!email){
-    return res.status(400).json({status :0,mess:"Email required"});
+  let { otpGen, email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ status: 0, mess: "Email required" });
   }
-  
-   const existingOtp=await otpModel.findOne({email});
-   if(existingOtp){
-    existingOtp.otpGen=otpGen;
-    await existingOtp.save();
-   }
-  
-     
-      const mailOptions = {
-          from: "godsanju21@gmail.com",
-          to: otpData.email,
-          subject: `Email Verification for BookVerse SignUp`,
-          text: `Hello ${otpData.email},\n\nYour OTP for Email verification is : ${otpData.otpGen}\n\nPlease Fill this otp to the otp input textbox!.`,
-        };
 
-        setImmediate(() => {
-          transporter
-            .sendMail(mailOptions)
-            .then(() => console.log("OTP sent to :", otpData.email))
-            .catch((err) => {
-              console.error("OTP email error:", err);
-            });
-        })
-    otpData.save()
-    .then(() => {
-      res.send({ status: 1, mess: "Otp Saved Sucessfully!" , otpGen:otpData.otp});
-      
-    })
-    .catch((err) => {
-      res.send({ status: 0, mess: "Error While saving otp!", error: err });
+  try {
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
     });
-    
-});
-let OtpView= async (req, res) => {
-      let otp = await otpModel.find();
-      res.status(200).json({ status: 1, mess: "otpList", otpList :otp});
 
-    };
-      let otpDelete= async (req, res) => {
-        let otpId = req.params.id;
-        let otpdelete = await otpModel.deleteOne({ _id: otpId });
-        res.send({ status: 1, mess: "otp deleted" });
-      };
-module.exports={OtpInsert,OtpView,otpDelete};
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Email Verification for BookVerse SignUp",
+      html: `
+        <h3>Email Verification</h3>
+        <p>Hello ${email}</p>
+        <p>Your OTP for verification is:</p>
+        <h2>${otpGen}</h2>
+        <p>Please enter this OTP in the verification box.</p>
+      `
+    });
+
+    console.log("OTP Email Sent");
+
+    const existingOtp = await otpModel.findOne({ email });
+
+    if (existingOtp) {
+      existingOtp.otpGen = otpGen;
+      await existingOtp.save();
+    } else {
+      let otpData = new otpModel({ email, otpGen });
+      await otpData.save();
+    }
+
+    res.send({ status: 1, mess: "OTP Sent Successfully!" });
+
+  } catch (err) {
+    console.log("OTP Email Error:", err);
+    res.send({ status: 0, mess: "OTP not sent!", error: err });
+  }
+
+};
+
+
+let OtpView = async (req, res) => {
+  let otp = await otpModel.find();
+  res.status(200).json({ status: 1, mess: "otpList", otpList: otp });
+};
+
+
+let otpDelete = async (req, res) => {
+  let otpId = req.params.id;
+  await otpModel.deleteOne({ _id: otpId });
+  res.send({ status: 1, mess: "otp deleted" });
+};
+
+
+module.exports = { OtpInsert, OtpView, otpDelete };
