@@ -15,7 +15,7 @@ const BookClubPage = ({ setWishlist, wishlist,removeBook,cart, setCart }) => {
   const [isMember, setIsMember] = useState(() => {
     return localStorage.getItem("joined") === "true";
   });
-  const API = "https://bookverse-server-juw1.onrender.com";
+  const API = "https://book-verse-snowy.vercel.app";
   useEffect(() => {
     const joined = localStorage.getItem("joined");
     const memberId=localStorage.getItem("memberId");
