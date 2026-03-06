@@ -86,7 +86,7 @@ const [websiteratingList, setWebsiteratingList]=useState([]);
      const [menuOpen, setMenuOpen] = useState(false);
   
    const[websiteData,setWebsiteData]=useState({author:"",reviewText:""})
-  const API = "https://bookverse-server-juw1.onrender.com";
+  const API = "https://book-verse-snowy.vercel.app";
 const navigate=useNavigate();
   let [email, setEmail] = useState({
     email: "",
