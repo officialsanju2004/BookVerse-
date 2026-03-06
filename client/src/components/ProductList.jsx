@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link ,useParams} from 'react-router-dom';
 
 const ProductList = () => {
-     const API = "https://bookverse-server-juw1.onrender.com";
+     const API = "https://book-verse-snowy.vercel.app";
      const [productList, setproductList] = useState([]);
  let getAllproductList = () => {
     axios
