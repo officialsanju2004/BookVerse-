@@ -7,7 +7,7 @@ export default function AdminLogin({ setIsAdmin }) {
     username: "",
     password: "",
   });
-const API = "https://bookverse-server-juw1.onrender.com";
+const API = "https://book-verse-snowy.vercel.app";
   const [updateFormData, setUpdateFormData] = useState({
     currentUsername: "",
     newUsername: "",
