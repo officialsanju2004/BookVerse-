@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 const ClubMembers = ({ members }) => {
     const [userData,setUserData]=useState('');
-    const API = "https://bookverse-server-juw1.onrender.com";
+    const API = "https://book-verse-snowy.vercel.app";
   
   useEffect(() => {
     axios
