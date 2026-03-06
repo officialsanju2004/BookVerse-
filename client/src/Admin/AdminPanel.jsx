@@ -41,7 +41,7 @@ export default function AdminPanel({ setIsAdmin }) {
     orderId: null,
     actualpayment: "",
   });
-  const API = "https://bookverse-server-juw1.onrender.com";
+  const API = "https://book-verse-snowy.vercel.app";
   const [otpInput, setOtpInput] = useState("");
   const [activeTab, setActiveTab] = useState("admin");
   const [subscriberList, setSubscriberList] = useState([]);
