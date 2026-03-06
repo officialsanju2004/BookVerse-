@@ -13,7 +13,7 @@ function BookDetail({ books,
     const [quantity, setQuantity] = useState(1);
     const [loading,setLoading]=useState(true);
     const [book,setBook]=useState(null);
-  const API = "https://bookverse-server-juw1.onrender.com";
+  const API = "https://book-verse-snowy.vercel.app";
     
 useEffect(()=>{
   if(!Array.isArray(books)){
