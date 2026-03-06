@@ -9,7 +9,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 
 function CartPage({ cart, setCart }) {
-  const API = "https://bookverse-server-juw1.onrender.com";
+  const API = "https://book-verse-snowy.vercel.app";
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentStep, setPaymentStep] = useState("cart"); // 'cart' | 'payment' | 'confirmation'
   const [paymentMethod, setPaymentMethod] = useState(""); // 'online' | 'cod'
