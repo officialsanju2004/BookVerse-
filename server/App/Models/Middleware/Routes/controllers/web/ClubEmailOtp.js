@@ -1,16 +1,8 @@
-
 const nodemailer = require("nodemailer");
 const ClubOtpModel = require("../../../../ClubOtpModel");
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,  // ✅ env variable use karo
-    pass: process.env.EMAIL_PASS,  // ✅ env variable use karo
-  },
-});
+let ClubOtpInsert = async (req, res) => {
 
-const ClubOtpInsert = async (req, res) => {
   let { otpGen, email } = req.body;
 
   if (!email) {
@@ -18,40 +10,54 @@ const ClubOtpInsert = async (req, res) => {
   }
 
   try {
-    // Upsert - existing update karo ya naya banao
-    let otpData = await ClubOtpModel.findOneAndUpdate(
-      { email },
-      { otpGen },
-      { upsert: true, new: true }
-    );
 
-    const mailOptions = {
-      from: process.env.EMAIL_USER,  // ✅ SAME as auth.user hona chahiye!
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
       to: email,
-      subject: `Email Verification for BookVerse Club SignUp`,
-      text: `Hello ${email},\n\nYour OTP for Email verification is: ${otpGen}\n\nPlease fill this OTP in the input box!`,
-    };
+      subject: "Email Verification for BookVerse Club SignUp",
+      html: `
+        <h3>Email Verification</h3>
+        <p>Hello ${email}</p>
+        <p>Your OTP for verification is:</p>
+        <h2>${otpGen}</h2>
+        <p>Please enter this OTP in the verification box.</p>
+      `
+    });
 
-    transporter.sendMail(mailOptions)
-      .then(() => console.log("OTP sent to:", email))
-      .catch((err) => console.error("OTP email error:", err));
+    console.log("OTP Email Sent");
 
-    res.send({ status: 1, mess: "OTP Saved Successfully!" });
+    let otpData = new ClubOtpModel({ email, otpGen });
+    await otpData.save();
+
+    res.send({ status: 1, mess: "OTP Sent Successfully!" });
 
   } catch (err) {
-    res.send({ status: 0, mess: "Error while saving OTP!", error: err });
+    console.log("OTP Email Error:", err);
+    res.send({ status: 0, mess: "OTP not sent!", error: err });
   }
+
 };
-let ClubOtpView= async (req, res) => {
-let otp = await ClubOtpModel.find();
-res.status(200).json({ status: 1, mess: "otpList", otpList :otp});
 
-};  
-  let ClubotpDelete= async (req, res) => {  
-    let otpId = req.params.id;  
-    let otpdelete = await ClubOtpModel.deleteOne({ _id: otpId });  
-    res.send({ status: 1, mess: "otp deleted" });  
-  };
 
-module.exports={ClubOtpInsert,ClubOtpView,ClubotpDelete};
+let ClubOtpView = async (req, res) => {
+  let otp = await ClubOtpModel.find();
+  res.status(200).json({ status: 1, mess: "otpList", otpList: otp });
+};
 
+
+let ClubotpDelete = async (req, res) => {
+  let otpId = req.params.id;
+  await ClubOtpModel.deleteOne({ _id: otpId });
+  res.send({ status: 1, mess: "otp deleted" });
+};
+
+
+module.exports = { ClubOtpInsert, ClubOtpView, ClubotpDelete };
