@@ -47,6 +47,7 @@ mongoose.connect(process.env.MONGODB_URI).then(()=>{
     console.log("Connected to MongoDb");
     app.listen(process.env.PORT||3000,()=>{
         console.log('Server is running...') 
+      console.log("Frontend URL:", process.env.FRONTEND_URL);
     })
 }).catch((err)=>{
     console.log(err)
